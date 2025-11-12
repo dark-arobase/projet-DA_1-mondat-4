@@ -5,7 +5,7 @@
 
 
 **Tâche html**
-(Micheal,Eric et chrysler : doit voir le id et class)
+(Micheal,Eric et chrysler : doit voir les id et class et expliquer leur liens) 
 
 
 **Tâche css** 
@@ -17,13 +17,25 @@
 
 
 **Back-end**
-()
+(Massyle et Lotfi)
 
 
 
 **Légende**
 **LES BRANCHE SONT IMPORTANT, CHACUN FAIT SA PARTI DE TACHE DANS SA BRANCHE!!**
+*Deux branche :
+-Front-end(html,css,javascript)
+-Back-end(express,node.js)
 
 "." = fonctionalité
 "()" = Personne qui fait la tache
 "**" = Message important
+
+
+**REGLE**
+-Faire sa tache sans changer le fichier de l'autre
+-La personne ayant le moins de commit aura un bonne récomponse! (JE RIGOLE PAS!)
+-Expliquer chacun de vos code au chef
+-les personne qui font front end --> vous allez parler ensemble et faire un plan
+
+
