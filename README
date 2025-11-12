@@ -1,44 +1,57 @@
 **Objectif du mondat-4**
--Crée un application web comme instagram :
-.afficher un flux image d'une Api (ex : pexels,unplash Pixabay)
+---
+Développer une application web reproduisant les fonctionnalités essentielles
+d’Instagram :
+- Afficher un flux d’images provenant d’une API d’images gratuite (ex. Pexels, Unsplash, Pixabay, Picsum).
+- Gérer des comptes utilisateurs (inscription, connexion, déconnexion).
+- Permettre de liker et commenter des images.
+- Interface responsive et dynamique (HTML/CSS/JS).
+- Architecture serveur REST avec Express (routes, middlewares, contrôle des données).
 
 
 
 **Tâche html**
-(Micheal,Eric et chrysler : doit voir les id et class et expliquer leur liens) 
+(Micheal,Eric et chrysler : doit voir les id et class et expliquer leur liens)
+---
 
 
 **Tâche css** 
 (Chrysler ou Micheal)
-
+---
 
 **Tâche javascript**
 (Eric et Chrysler)
-
+---
 
 **Back-end**
 (Massyle et Lotfi)
+---
 
 
 
 **Légende**
+---
 **LES BRANCHE SONT IMPORTANT, CHACUN FAIT SA PARTI DE TACHE DANS SA BRANCHE!!**
-*Deux branche :
--Front-end(html,css,javascript)
--Back-end(express,node.js)
+
+Deux branche :
+- Front-end(html,css,javascript)
+- Back-end(express,node.js)
 
 "." = fonctionalité
+
 "()" = Personne qui fait la tache
+
 "**" = Message important
 
 
 **REGLE**
--Faire sa tache sans changer le fichier de l'autre
--La personne ayant le moins de commit aura un bonne récomponse! (JE RIGOLE PAS!)
--Expliquer chacun de vos code au chef
--Les personne qui font **front end* --> vous allez parler ensemble et faire un plan pour le designe
--Pas de CMS, pas de no-code
--Respect des conditions d’utilisation de l’API choisie (ex. attributionobligatoire si précisé)
--Structure du projet claire
+---
+- Faire sa tache sans changer le fichier de l'autre
+- La personne ayant le moins de commit aura un bonne récomponse! (JE RIGOLE PAS!)
+- Expliquer chacun de vos code au chef
+- Les personne qui font **front end* --> vous allez parler ensemble et faire un plan pour le designe
+- Pas de CMS, pas de no-code
+- Respect des conditions d’utilisation de l’API choisie (ex. attributionobligatoire si précisé)
+- Structure du projet claire
 
 
