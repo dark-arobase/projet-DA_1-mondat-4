@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+</head>
+<body>
+    <div>
+        <form id="logform">
+            <div>
+                <label for="name">Nom</label>
+                <div>
+                    <input type="text" id="name" required>
+                </div>
+            </div>
+            <div>
+                <label for="prename">Prenom</label>
+                <div>
+                    <input type="text" id="prename" required>
+                </div>
+            </div>
+            <div>
+                <label for="mail">Courriel</label>
+                <div>
+                    <input type="email" id="mail" required>
+                </div>
+            </div>
+            <div>
+                <label for="tel">Telephone</label>
+                <div>
+                    <input type="text" id="tel" required>
+                </div>
+            </div>
+            <div>
+                <label for="placeofbirth">Lieu de naissance</label>
+                <div>
+                    <input type="text" id="placeofbirth" required>
+                </div>
+                <label for="date">Date</label>
+                <div>
+                    <input type="date" id="date" required>
+                </div>
+            </div>
+            <div>
+                <label for="describe">Description</label>
+                <div>
+                    <textarea id="describe" rows="5" cols="50">
+
+                    </textarea>
+                </div>
+            </div>
+            <div>
+                <label for="mdp">Mot de passe</label>
+                <div>
+                    <input type="password" id="mdp" required>
+                </div>
+            </div>
+            <div>
+                <label for="cmdp">Confirmation du mot de passe</label>
+                <div>
+                    <input type="password" id="cmdp" required>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <button type="submit" id="confirm">Confirmer</button>
+                    <button type="submit" id="cancel">Annuler</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
