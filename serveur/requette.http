@@ -1,0 +1,3 @@
+curl -x POST http://localhost:5000/adduser \
+     -H Content-Type: application/json \
+     -d {"name" : "Eric", "prename" : "e", "email" :"e", "telephone":"e", "lieu":"e", "date":"2007-02-02", "description":"er" ,"mdp":r }'

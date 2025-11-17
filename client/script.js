@@ -1,44 +1,85 @@
 //page inscription
-const users = []
-const formlogin= document.getElementById('logform')
-const name= document.getElementById('name')
-const prename = document.getElementById('prename')
-const email = document.getElementById('mail')
-const telephone = document.getElementById('tel')
-const lieu= document.getElementById('placeofbirth')
-const date= document.getElementById('date')
-const description = document.getElementById('describe')
-const mdp = document.getElementById('mdp')
-const cmdp= document.getElementById('cmdp')
-const btnsubmit= document.getElementById('confirm')
-const btncancel= document.getElementById('cancel')
+const formlogin = document.getElementById('logform');
+const nomform = document.getElementById('name');
+const prenomform = document.getElementById('prename');
+const emailform = document.getElementById('mail');
+const telform = document.getElementById('tel');
+const lieuform = document.getElementById('placeofbirth');
+const dateform = document.getElementById('date');
+const descriptionform = document.getElementById('describe');
+const mdpform = document.getElementById('mdp');
+const cmdpform = document.getElementById('cmdp');
+const btnsubmit = document.getElementById('confirm');
+const btncancel = document.getElementById('cancel');
 
-if(formlogin){
+if (formlogin) {
+    formlogin.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-    btnsubmit.addEventListener('click', (e)=>{
-    if(confirm("Voulez vous enregistrer la modification")){
-        user={
-        nom : name.value,
-        prenom : prename.value,
-        email: email.value,
-        telephone : telephone.value,
-        lieu : lieu.value,
-        date : date.value,
-        description : description.value,
-        mdp : mdp.value
-    };
+        // Le bouton cliqué
+        const btn = document.activeElement;
 
-    users.push(user);
-    formlogin.reset(); 
-    }
-    
+        const name = nomform.value;
+        const prename = prenomform.value;
+        const email = emailform.value;
+        const telephone = telform.value;
+        const lieu = lieuform.value;
+        const date = dateform.value;
+        const description = descriptionform.value;
+        const mdp = mdpform.value;
+
+        if (btn.dataset.action === "confirm") {
+
+            if (mdp !== cmdpform.value) {
+                alert("Les mots de passe ne correspondent pas !");
+                return;
+            }
+
+            if (confirm("Voulez-vous enregistrer l'utilisateur ?")) {
+
+                const user = {
+                    name,
+                    prename,
+                    email,
+                    telephone,
+                    lieu,
+                    date,
+                    description,
+                    mdp
+                };
+
+                try {
+                    const res = await fetch("http://localhost:5000/adduser", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(user)
+                    });
+
+                    if (!res.ok) {
+                        throw new Error("Erreur serveur");
+                    }
+
+                    alert("Utilisateur enregistré !");
+                    formlogin.reset();
+                } catch (err) {
+                    console.error(err);
+                    alert("Impossible de sauvegarder l'utilisateur.");
+                }
+            }
+        }
+    });
+}
+
+if(btncancel){
+    btncancel.addEventListener("click", () => {
+        formlogin.reset();
+        window.location.href = "accueil.html";
 });
 
-btncancel.addEventListener('click', (e) =>{
-    formlogin.reset()
-    window.location.href="accueil.html"
-    })
 }
+
 
 
 //page accueil
@@ -47,26 +88,36 @@ const username = document.getElementById('username');
 const password = document.getElementById('password');
 const error = document.getElementById('error');
 
-
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    let found = false;
+    try {
+        const res = await fetch("http://localhost:5000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: username.value,
+                mdp: password.value
+            })
+        });
 
-    users.forEach(user => {
-        if (username.value === user.email && password.value === user.mdp) {
-            found = true;
+        const data = await res.json();
+
+        if (res.ok) {
+            window.location.href = "dashboard.html";
+        } else {
+            error.innerHTML = `<p>${data.error}</p>`;
+            error.style.color = "red";
         }
-    });
-
-    if (found) {
-        window.location.href = "";
-    } else {
-        error.innerHTML = "<p>Mot de passe ou nom d'utilisateur incorrect</p>";
+    } catch (err) {
+        console.error(err);
+        error.innerHTML = "<p>Erreur serveur</p>";
         error.style.color = "red";
-        form.reset();
     }
 });
+
 
 
 

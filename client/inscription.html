@@ -7,67 +7,76 @@
 </head>
 <body>
     <div>
-        <form id="logform">
+        <form id="logform" action="http://localhost:5000/adduser" method="post">
+            
             <div>
                 <label for="name">Nom</label>
                 <div>
-                    <input type="text" id="name" required>
+                    <input type="text" id="name" name="name" required>
                 </div>
             </div>
+
             <div>
-                <label for="prename">Prenom</label>
+                <label for="prename">Prénom</label>
                 <div>
-                    <input type="text" id="prename" required>
+                    <input type="text" id="prename" name="prename" required>
                 </div>
             </div>
+
             <div>
                 <label for="mail">Courriel</label>
                 <div>
-                    <input type="email" id="mail" required>
+                    <input type="email" id="mail" name="email" required>
                 </div>
             </div>
+
             <div>
-                <label for="tel">Telephone</label>
+                <label for="tel">Téléphone</label>
                 <div>
-                    <input type="text" id="tel" required>
+                    <input type="text" id="tel" name="telephone" required>
                 </div>
             </div>
+
             <div>
                 <label for="placeofbirth">Lieu de naissance</label>
                 <div>
-                    <input type="text" id="placeofbirth" required>
+                    <input type="text" id="placeofbirth" name="lieu" required>
                 </div>
+
                 <label for="date">Date</label>
                 <div>
-                    <input type="date" id="date" required>
+                    <input type="date" id="date" name="date" required>
                 </div>
             </div>
+
             <div>
                 <label for="describe">Description</label>
                 <div>
-                    <textarea id="describe" rows="5" cols="50">
-
-                    </textarea>
+                    <textarea id="describe" name="description" rows="5" cols="50"></textarea>
                 </div>
             </div>
+
             <div>
                 <label for="mdp">Mot de passe</label>
                 <div>
-                    <input type="password" id="mdp" required>
+                    <input type="password" id="mdp" name="mdp" required>
                 </div>
             </div>
+
             <div>
                 <label for="cmdp">Confirmation du mot de passe</label>
                 <div>
                     <input type="password" id="cmdp" required>
                 </div>
             </div>
+
             <div>
                 <div>
-                    <button type="submit" id="confirm">Confirmer</button>
-                    <button type="submit" id="cancel">Annuler</button>
+                    <button type="submit" data-action="confirm" id="confirm">Confirmer</button>
+                    <button type="button" data-action="cancel" id="cancel">Annuler</button>
                 </div>
             </div>
+
         </form>
     </div>
 </body>

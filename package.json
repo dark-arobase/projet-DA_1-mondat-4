@@ -1,0 +1,25 @@
+{
+  "name": "projet-da_1-mondat-4",
+  "version": "1.0.0",
+  "description": "**Objectif du mondat-4**\r ---\r Développer une application web reproduisant les fonctionnalités essentielles\r d’Instagram :\r - Afficher un flux d’images provenant d’une API d’images gratuite (ex. Pexels, Unsplash, Pixabay, Picsum).\r - Gérer des comptes utilisateurs (inscription, connexion, déconnexion).\r - Permettre de liker et commenter des images.\r - Interface responsive et dynamique (HTML/CSS/JS).\r - Architecture serveur REST avec Express (routes, middlewares, contrôle des données).",
+  "homepage": "https://github.com/dark-arobase/projet-DA_1-mondat-4#readme",
+  "bugs": {
+    "url": "https://github.com/dark-arobase/projet-DA_1-mondat-4/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dark-arobase/projet-DA_1-mondat-4.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "knex": "^3.1.0",
+    "sqlite3": "^5.1.7"
+  }
+}
