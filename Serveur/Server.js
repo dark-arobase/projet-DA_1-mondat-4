@@ -42,6 +42,14 @@ app.post('/addUser', async (req, res)=>{
         password: Password
      }
 
+    const exists = await db("User").select("N_Utilisateur").where("N_Utilisateur",N_Utilisateur).first()
+
+     if (exists){
+      window.alert("Le nom existe deja ;)")
+      return
+     }
+
+
 
      await db("User").insert(User);
      res.status(201).json(User)
@@ -57,20 +65,16 @@ app.post('/addUser', async (req, res)=>{
       
 });
 
-app.post('/addPost', async (req, res)=>{
+app.post('/addPost/:id', async (req, res)=>{
    
    try{
 
     const nom_utilisateur = await db("User").select("N_Utilisateur").where('id',)
 
-    const {N_Utilisateur, Email, Password} = req.body;
+    const {N_Utilisateur, Password} = req.body;
 
     if(!N_Utilisateur){
         return res.status(400).json({error: "Champ 'name' obligatoire.."})
-     }
-
-    if(!Email || Email.includes("@")){
-        return res.status(400).json({error: "Champ 'Email' obligatoire.."})
      }
 
     if(!Password){
@@ -80,7 +84,6 @@ app.post('/addPost', async (req, res)=>{
      const User = {
         id: crypto.randomUUID(),
         name: N_Utilisateur,
-        Email: Email,
         password: Password
      }
 

@@ -1,0 +1,77 @@
+body {
+  display: grid;
+  grid-template-rows: auto 1fr; /* Hauteur automatique pour le contenu, 1 seule fraction pour le reste */
+  min-height: 100vh;
+  margin: 0;
+}
+
+header {
+  grid-row: 1;
+}
+
+footer {
+  grid-row: 3; /* Ou juste après le contenu principal */
+}
+
+
+main{
+    grid-row: 2;
+    margin: 0 auto;
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+
+
+.inputnom input, .inputpass input {
+    width: 80%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.btt {
+    text-align: center;
+}
+
+.btt button {
+    background-color: #3897f0;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btt button:hover {
+    background-color: #267dd4;
+}
+
+
+/* change la police de instagramme */
+.policeinst {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* mettre le footer enbas au centre */
+footer {
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+
+#page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}

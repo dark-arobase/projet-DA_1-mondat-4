@@ -6,23 +6,10 @@ const idu = document.getElementById("uId")
 
 
 
-
-async function loadProducts() {
-  try {
-    const res = await fetch("/toutUtilisateur");
-    if (!res.ok) throw new Error("Erreur chargement produits"); /*erreur si il y pas de reponse*/
-
-    utilisdonner = await res.json();
-
-  } catch (err) {
-    console.error("Impossible de charger les produits", err);
-  }
-}
-
-
-
 form.addEventListener("submit", async (e) =>{
     e.preventDefault()
+
+    
 
     const name = N_Utilisateur.value
     const pass = Password.value
@@ -32,12 +19,7 @@ form.addEventListener("submit", async (e) =>{
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({N_Utilisateur: name,Password: pass}),
             })
-        
-
         form.reset();
-        id.value = ""
-        await loadProducts();
-
     }
 
     catch(err){
@@ -46,4 +28,3 @@ form.addEventListener("submit", async (e) =>{
 })
 
 
-loadProducts()

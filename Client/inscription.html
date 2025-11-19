@@ -3,20 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
+    <title>Inscription - Instagram</title>
+    <link rel="stylesheet" href="style.css">
+
+    
 </head>
 <body>
+
+    <div id="page">
     <main>
+
+        <div class="policeinst">Instagram</div>
         <form id="userForm">
         <input type="hidden" id="uId">
-        <div>
+        <div class ="inputnom">
             <label for="name">Nom Utilisateur</label>
             <div>
                 <input type="text" id="name" placeholder="Nom Utilisateur" required>
             </div>
         </div>
 
-        <div>
+        <div class ="inputpass">
             <label for="Password">Password</label>
             <div>
                 <input type="text" id="Password" placeholder="Password" required>
@@ -24,15 +31,21 @@
         </div>
 
 
-        <div>
-              <div>
-                <div>
-                  <button id="submitBtn" type="submit">Accepter</button>
-              </div>
-            </div>
+        <div class="btt">
+                <button id="submitBtn" type="submit">S'inscrire</button>
         </div>
 
         <script src="Script.js"></script>
+
+
+        
     </main>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Pastagram. Tous droits réservés.</p>
+        </div>
+    </footer>
 </body>
 </html>
