@@ -1,0 +1,3 @@
+curl -X POST http://localhost:3000/addUser \
+     -H "Content-Type: application/json" \
+     -d '{"Nom Utilisateur": "Pro", "Password": "1234561235"}'

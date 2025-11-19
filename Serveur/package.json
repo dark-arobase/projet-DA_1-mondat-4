@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "express": "^5.1.0",
+    "knex": "^3.1.0",
+    "knox": "^0.3.1",
+    "sqlite3": "^5.1.7"
+  }
+}
