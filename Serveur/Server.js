@@ -45,7 +45,7 @@ app.post('/addUser', async (req, res)=>{
     const exists = await db("User").select("N_Utilisateur").where("N_Utilisateur",N_Utilisateur).first()
 
      if (exists){
-      window.alert("Le nom existe deja ;)")
+         res.status(409).json({error: "Nom d'utilisateur deja utilise"})
       return
      }
 
