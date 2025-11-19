@@ -1,0 +1,33 @@
+### Créer un utilisateur
+curl -X POST http://localhost:3000/addUtilisateur \
+     -H "Content-Type: application/json" \
+     -d '{"username": "Jean Dupont", "password": "1234"}'
+
+### Voir tous les utilisateurs (avant)
+curl http://localhost:3000/allUtilisateurs
+
+### PUT réussi (200)
+curl -X PUT http://localhost:3000/product/51766e9a-356a-41f6-877a-f34b9c9e4fae \
+     -H "Content-Type: application/json" \
+     -d '{"name": "Sac a dos mis a jour", "price": 59.99}'
+
+### PUT erreur (400) 
+curl -X PUT http://localhost:3000/product/51766e9a-356a-41f6-877a-f34b9c9e4fae \
+     -H "Content-Type: application/json" \
+     -d '{"price": -10}'
+
+### PUT erreur (404)
+curl -X PUT http://localhost:3000/product/ID_INEXISTANT \
+     -H "Content-Type: application/json" \
+     -d '{"name": "Test"}'
+
+### DELETE réussi (200)
+curl -X DELETE http://localhost:3000/product/244ed2df-bfe3-4b9d-9c3a-9c67b6063567
+
+### DELETE erreur (404) 
+curl -X DELETE http://localhost:3000/product/00000000-0000-0000-0000-000000000000
+
+### Voir tous les produits (après)
+curl http://localhost:3000/allProducts
+
+
