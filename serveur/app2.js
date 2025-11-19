@@ -1,43 +1,45 @@
-const express = require('express');
-const path = require('path');
+const express = require('express')
+const path = require('path')
+const crypto = require('crypto')
 
-const crypto = require('crypto');
+const {db, createTable} = require('./db')
 
-const { db, createTable } = require('./db');
+const app = express()
 
-const app = express();
+app.use(express.json())
 
-app.use(express.json());
+//pour afficher les logs des requetes
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}]  ${req.method}  ${req.url}`);
+  next();
+});
 
 app.use(express.static(path.join(__dirname, '../client')))
 
 app.get('/', (req, res)=>{
 
-  res.sendFile(path.join(__dirname, "../client", "indentification.html"));
+   res.sendFile(path.join(__dirname, "../client", "indentification.html"));
 
-});
+})
 
-
-// Ajouter un nouvel utilisateur dans 
-// la base de données inscription.html
 app.post('/addUser', async (req, res)=>{
    
    try{
 
-    const {username, password} = req.body;
+    const {N_Utilisateur, Password} = req.body;
 
-    if(!username){
-        return res.status(400).json({error: "Champ 'username' obligatoire.."})
+    if(!N_Utilisateur){
+        return res.status(400).json({error: "Champ 'name' obligatoire.."})
      }
 
-    if(!password){
-        return res.status(400).json({error: "Champ 'password' obligatoire.."})
+    if(!Password){
+        return res.status(400).json({error: "Champ 'Password' obligatoire.."})
      }
 
      const User = {
         id: crypto.randomUUID(),
-        username: username,
-        password: password
+        N_Utilisateur: N_Utilisateur,
+        password: Password
      }
 
 
@@ -55,48 +57,6 @@ app.post('/addUser', async (req, res)=>{
       
 });
 
-app.post('/login', async (req, res) => {
-   try {
-      const { username, password } = req.body;
-
-      if (!username) {
-         return res.status(400).json({ error: "Champ 'username' obligatoire." });
-      }
-
-      if (!password) {
-         return res.status(400).json({ error: "Champ 'password' obligatoire." });
-      }
-
-   const utilisateur = await db('User').where({ username }).first();
-      if (!utilisateur) {
-         return res.status(401).json({ error: "Utilisateur introuvable." });
-      }
-
-      if (utilisateur.password !== password) {
-         return res.status(401).json({ error: "Mot de passe incorrect." });
-      }
-
-      res.status(200).json({ message: "Identification réussie." });
-   } catch (err) {
-      console.error("Erreur /login", err);
-      res.status(500).json({ error: "Erreur serveur." });
-   }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* pas encore fait et verif
 app.post('/addPost', async (req, res)=>{
    
    try{
@@ -127,22 +87,16 @@ app.post('/addPost', async (req, res)=>{
 
      await db("User").insert(User);
      res.status(201).json(User)
-
-
-
-    
+     
      }catch(err){
       console.error("Erreur /addUser", err);
       res.status(500).json({error: "Erreur serveur.." })
 
      }
       
-});*/
+});
 
 
-
-
-// afficher tous les utilisateurs
 app.get('/toutUtilisateur', async (req, res)=>{
    try{
 
@@ -154,6 +108,8 @@ app.get('/toutUtilisateur', async (req, res)=>{
    }
    
 });
+
+
 
 createTable()
 .then(()=>{

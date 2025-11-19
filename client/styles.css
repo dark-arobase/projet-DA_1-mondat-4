@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+}
+
+/* Sidebar */
+.slide {
+    box-shadow: var(--slide-width);
+    display: grid;
+    margin: 20px auto;
+    max-width: var(--slide-width);
+}
+
+.slide-items {
+    border-radius: 5px;
+    grid-area: 1/1;
+    overflow: hidden;
+    position: relative;
+}
+
+.slide-items>* {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+}
+
+.slide-items .active {
+    opacity: 1;
+    pointer-events: initial;
+    position: relative;
+}
+
+.slide-nav {
+    display: grid;
+    grid-area: 1/1;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    z-index: 1;
+}
+
+.slide-thumbs {
+    display: flex;
+    grid-column: 1 / 3;
+}
+
+.slide-thumb-item {
+    background-color: var(--slide-thumb-default-color);
+    border-radius: 3px;
+    display: block;
+    flex: 1;
+    height: var(--slide-thumb-height);
+    margin: 5px;
+    overflow: hidden;
+}
+
+.slide-thumb-item.active::after {
+    animation: thumb 5s forwards linear;
+    background-color: var(--slide-thumb-active-color);
+    border-radius: 3px;
+    content: '';
+    display: block;
+    height: inherit;
+    transform: translateX(-100%);
+}
+
+.slide-next,
+.slide-prev {
+    opacity: 0;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@keyframes thumb {
+    to {
+        transform: initial;
+    }
+}
+/* Sidebar end */
+.logo-img {
+    width: 120px;
+    height: auto;
+}
+
+.logo-icon {
+    font-size: 32px;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+nav button {
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s;
+}
+
+nav button:hover {
+    background-color: #1a1a1a;
+}
+
+nav button span {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 16px;
+}
+
+nav button i {
+    font-size: 24px;
+    position: relative;
+}
+
+nav button img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+/* Notifications badge */
+nav button i span {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff3040;
+    color: #fff;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+nav button i em {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 8px;
+    height: 8px;
+    background-color: #ff3040;
+    border-radius: 50%;
+}
+
+/* Main content */
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    flex: 1;
+}

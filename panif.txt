@@ -1,0 +1,27 @@
+Catégorie Exigence
+
+Flux d’images Récupération via une API JSON gratuite (clé API requise)
+
+Recherche Barre de recherche d’images (mot-clé)
+
+Utilisateurs Inscription + Connexion + Déconnexion (sessions ou JWT)
+
+Likes Like/unlike stockés côté serveur
+
+Commentaires Ajout de commentaires sur une image
+
+Front-end Grille responsive (type Instagram), modal détail
+
+API interne Routes /api/photos, /api/auth, /api/likes, /api/comments
+
+Base de données JSON local, SQLite ou MongoDB au choix
+
+Git Projet versionné avec branches, commits réguliers, README
+
+Déploiement Mise en ligne (ex. Render, Railway, Vercel, ou autre)
+
+
+
+
+Utilisateurs 
+Inscription + Connexion + Déconnexion (sessions ou JWT)
