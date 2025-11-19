@@ -14,6 +14,7 @@ const btncancel = document.getElementById('cancel');
 
 if (formlogin) {
     formlogin.addEventListener('submit', async (e) => {
+        try{
         e.preventDefault();
 
         // Le bouton cliqué
@@ -27,6 +28,8 @@ if (formlogin) {
         const date = dateform.value;
         const description = descriptionform.value;
         const mdp = mdpform.value;
+
+        const error=[];
 
         if (btn.dataset.action === "confirm") {
 
@@ -48,7 +51,6 @@ if (formlogin) {
                     mdp
                 };
 
-                try {
                     const res = await fetch("http://localhost:5000/adduser", {
                         method: "POST",
                         headers: {
@@ -63,12 +65,12 @@ if (formlogin) {
 
                     alert("Utilisateur enregistré !");
                     formlogin.reset();
-                } catch (err) {
+                
+            }
+        } } catch (err) {
                     console.error(err);
                     alert("Impossible de sauvegarder l'utilisateur.");
                 }
-            }
-        }
     });
 }
 
@@ -106,7 +108,7 @@ form.addEventListener('submit', async (e) => {
         const data = await res.json();
 
         if (res.ok) {
-            window.location.href = "dashboard.html";
+            window.location.href = "";
         } else {
             error.innerHTML = `<p>${data.error}</p>`;
             error.style.color = "red";

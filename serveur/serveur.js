@@ -19,19 +19,57 @@ app.post('/adduser', async (req, res)=>{
     try{
         const {name, prename, email, telephone, lieu, date, description ,mdp} = req.body
 
-        user={
-        nom : name,
-        prenom : prename,
-        email: email,
-        telephone : telephone,
-        lieu : lieu,
-        date : date,
-        description : description,
-        mdp : mdp
-    };
+        if (!name || !prename || !email || !telephone || !lieu || !date || !description || !mdp){
+            res.status(400).json({error: "Tous les champs sont obligatoires"})
+            return
+        } 
+        else if(!/^[\w.-]+@[\w.-]+\.[A-Za-z]{2,}$/.test(email)){
+            res.status(400).json({error: "Format d'email invalide"})
+            return
+        }
+        else if(!/^\+?[0-9]{7,15}$/.test(telephone)){
+            res.status(400).json({error: "Format de téléphone invalide"})
+            return
+        }
+        else if(mdp.length < 6){
+            res.status(400).json({error: "Le mot de passe doit contenir au moins 6 caractères"})
+            return
+        }
+        else if (date > new Date().toISOString().split('T')[0]){
+            res.status(400).json({error: "La date ne peut pas être dans le futur"})
+            return
+        }
+        else if(/^[A-Za-zÀ-ÖØ-öø-ÿ]+([ -][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/.test(name) === false){
+            res.status(400).json({error: "Format de nom invalide"})
+            return
+        }
+        else if(/^[A-Za-zÀ-ÖØ-öø-ÿ]+([ -][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/.test(prename) === false){
+            res.status(400).json({error: "Format de nom invalide"})
+            return
+        }
+        else{
+                user={
+                nom : name,
+                prenom : prename,
+                email: email,
+                telephone : telephone,
+                lieu : lieu,
+                date : date,
+                description : description,
+                mdp : mdp
+                };
 
-    await db('Users').insert(user)
-    res.status(201).json(user)
+                const test = await db('Users').select("*").where(user).first()
+
+                if(test !== 0){
+                    res.status(400).json({error: "Utilisateur déjà existant"})
+                    console.log("Utilisateur déjà existant")
+                }
+                else{
+                    await db('Users').insert(user)
+                    res.status(201).json(user)
+                }
+        }
 
     } catch (err){
         console.log("Erreur de serveur", err)
@@ -52,7 +90,6 @@ app.post("/login", async (req, res) => {
         if (user.mdp !== mdp) {
             return res.status(400).json({ error: "Mot de passe incorrect" });
         }
-
     } catch (err) {
         res.status(500).json({ error: "Erreur serveur" });
     }
@@ -68,6 +105,6 @@ createTable()
 
 })
 .catch((err) => {
-      console.log("Erreur de demarragde (table schema)", err);
+      console.log("Erreur de demarrage du serveur", err);
       process.exit(1);
 })
