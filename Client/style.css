@@ -13,8 +13,7 @@ footer {
   grid-row: 3; /* Ou juste après le contenu principal */
 }
 
-
-main{
+.inscription {
     grid-row: 2;
     margin: 0 auto;
     width: 50%;
